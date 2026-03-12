@@ -872,6 +872,13 @@ local data = {
         filetype = "bash"
     },
     {
+        name   = [[move over " in nested bash command substitution quotes]],
+        key    = [["]],
+        before = [[foo="$( echo "hello|" )"]],
+        after  = [[foo="$( echo "hello"| )"]],
+        filetype = "bash"
+    },
+    {
         name   = [[add " in a bash command substitution, after a open "]],
         key    = [["]],
         before = [["$("|)"]],

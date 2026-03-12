@@ -280,6 +280,15 @@ cond.move_right = function()
                 if utils.is_in_quotes(opts.line, opts.col - 1, opts.char) then
                     return
                 end
+                if vim.bo.filetype == 'bash' or vim.bo.filetype == 'sh' then
+                    local str = utils.get_shell_substitution_content_before_pos(
+                        opts.line,
+                        opts.col - 1
+                    )
+                    if str and utils.is_in_quotes(str, #str, opts.char) then
+                        return
+                    end
+                end
             end
         end
         return false
